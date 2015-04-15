@@ -1,0 +1,280 @@
+"vundle stuff
+
+set nocompatible			  " be iMproved
+filetype off				  " required!
+
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My bundles here:
+"
+" vim-scripts repos
+" e.g. vim-scripts/a.vim on github
+Plugin 'L9'
+Plugin 'FuzzyFinder'
+Plugin 'a.vim'
+Plugin 'CSApprox'
+Plugin 'matchit.zip'
+Plugin 'renamer.vim'
+Plugin 'repeat.vim'
+Plugin 'YankRing.vim'
+Plugin 'surfer.vim'
+
+"other repos
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'luochen1990/rainbow'
+Plugin 'majutsushi/tagbar'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"something for latex
+let g:tex_flavor='latex'
+let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode $*'
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set nu " line #s
+set noet "don't expand tabs to spaces
+filetype plugin on 
+syntax on
+set wrap " line wrapping
+set lbr " clean wrapping
+set textwidth=0 " default line wrap
+" start scrolling when the cursor is this many lines from top/bottom 
+set scrolloff=10 
+set hlsearch " highlight searches
+set incsearch " search incrementally
+set guifont=monospace:h10
+set backupdir=~/.tmp/vim_backups " don't store backups in current dir
+set tabstop=4 " tab wdith expansion
+set smarttab
+set autoindent
+set cindent
+set smartindent
+" make backspace key work w/o restrictions in insert mode
+set backspace=indent,eol,start
+set tags=tags;/ " default location of tags file, ; means search backwards until '/'
+set noeb " no error bell
+set nospell
+" ignore whitespace
+set diffopt+=iwhite
+
+" enable colors
+" this is needed for the csapprox plugin
+if &term =~ '^\(xterm\|screen\)$'
+	set t_Co=256
+endif
+colorscheme evening
+
+" highlight current line
+"set cursorline
+set nocursorline
+"hi cursorline ctermbg=black
+"hi cursorline guibg=black
+" only highlight current line in current window
+"autocmd WinEnter * setlocal cursorline
+"autocmd WinLeave * setlocal nocursorline
+
+set statusline=%F%m%r%h%w\ [FMT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set laststatus=2
+
+" remap visual blockwise selection (column mode)
+noremap <C-e> <C-v>
+
+" make ^c and ^v work in *nix
+vmap <C-x> "+x
+vmap <C-c> "+y
+vmap <C-v> "+p
+nmap <C-v> "+p
+imap <C-v> <C-r><C-o>+
+cmap <C-v> <C-r><C-o>+
+
+" cd to directory of current file
+map \c :cd <C-R>=expand("%:p:h") . "/" <Enter>
+
+" remap movement on wrapped lines
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
+" open tags in new splits
+map \s :sp<Enter>:exec("tag ".expand("<cword>"))<Enter>
+map \v :vsp<Enter>:exec("tag ".expand("<cword>"))<Enter>
+map ,s :sp<Enter>:tag 
+map ,v :vsp<Enter>:tag 
+
+" close the stupid omnicomplete cpp box when completed
+"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" iab <buffer> <unique> ,f <c-r>=fnamemodify(fnamemodify(getreg('%'), ':t'), ':r')<Enter>
+
+" edit vimrc and reload
+map ,r :sp ~/.vimrc<Enter>
+map <silent> ,R :source ~/.vimrc<Enter>:filetype detect<Enter>:exe ":echo 'vimrc reloaded'"<Enter>
+
+" line length limit
+" match ErrorMsg '\%>80v.\+'
+
+" Fuzzy file finder of awesomeness
+map \o :FufFile<Enter>
+
+"indention guides
+let g:indent_guides_auto_colors=0
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=DarkGrey ctermbg=grey20
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=grey20  ctermbg=grey20
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=DarkGrey ctermbg=DarkGrey
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey20 ctermbg=DarkGrey
+let g:indent_guides_guide_size = 2
+" autocmd VimEnter * :IndentGuidesEnable
+
+" Preserve undo between sessions
+set undofile
+set undodir=~/.vim/undodir
+
+" Easytags support for javacript
+let g:easytags_languages = { 
+\   'javascript': {
+\	 'cmd': 'jsctags',
+\	   'args': [], 
+\	   'fileoutput_opt': '-f',
+\	   'stdout_opt': '-f-',
+\	   'recurse_flag': ''
+\   }   
+\}
+
+"Easytags use vim search path for tags
+let g:easytags_dynamic_files = 1
+
+" omni complete tweaks
+"http://vim.wikia.com/wiki/VimTip1386
+"insert longest common match
+set completeopt=longest,menuone,menu,preview
+" http://vim.wikia.com/wiki/Improve_completion_popup_menu
+"exit on escape
+"inoremap <expr> <Esc>	  pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <Esc>	  pumvisible() ? "\<Esc>\<Esc>" : "\<Esc>"
+"remap enter to select the highlighted entry
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"auto select the first entry and keep typing to select matching entries
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+"this doesn't every seem to do anything
+"inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  "\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+" http://vim.wikia.com/wiki/VimTip102, end of the page
+" smart tab complete mapping
+" BLC modified to skip check an
+" select the first item in the list
+"function! CleverTab()
+  "if pumvisible()
+	"return "\<C-N>"
+  "endif
+  "if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+	"return "\<Tab>"
+  ""elseif exists('&omnifunc') && &omnifunc != ''
+	""return "\<C-X>\<C-O>\<Down>"
+  "else
+	"return "\<C-N>\<Down>"
+  "endif
+"endfunction
+
+"inoremap <Tab> <C-R>=CleverTab()<CR>
+
+"options for surfer.vim
+"map for surfer.vim
+map \t :Surf<CR>
+
+"support for javacript
+let g:surfer_custom_languages = { 
+\   'javascript': {
+\	 'ctags_prg': 'jsctags',
+\	 'ctags_args': '-f-', 
+\   }   
+\}
+
+"project roots for surfer
+let g:surfer_root_markers = ['tags']
+
+"actually, we'll use easy tags, because it can generate tags
+"asynchronously
+let g:surfer_generate_tags = 0
+
+""a function for filtering tags to the current file
+""we need this, since easytags is generating the tags
+"fu! SessionTags(tag, current_buffer, project_root)
+	"let l:session_files = surfer#SessionFiles(a:current_buffer, a:project_root)
+
+	"let l:is_session_file = 0
+
+	"for buffer_name in l:session_files
+		"if a:tag.file ==# buffer_name
+			"let l:is_session_file = 1
+			"break
+		"endif
+	"endfor
+
+	"if l:is_session_file == 0
+		"return 0
+	"endif
+
+	"return surfer#TagFilter(a:tag, a:current_buffer, a:project_root)
+
+"endfu
+
+""a function for filtering tags to the current file
+""we need this, since easytags is generating the tags
+"fu! ProjectTags(tag, current_buffer, project_root)
+	"return surfer#TagFilter(a:tag, a:current_buffer, a:project_root)
+"endfu
+
+"let g:surfer_modifiers= {
+"\	" ": {"files": "surfer#CurrentBuffer", "filter": "SessionTags"},
+"\	"#": {"files": "surfer#CurrentBuffer", "filter": "ProjectTags"}
+"\}
+
+"options for YOu CompleteMe
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_key_list_select_completion = ['<TAB>', '<C-j>']
+let g:ycm_key_list_previous_completion = ['<C-k>']
+
+"override vims default settings for python files
+au FileType python set ts=4 sw=4 noet
+au FileType pyrex set ts=4 sw=4 noet
+
+" enable rainbow parentheses
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+
+" mapping for tag bar
+nmap <leader>r :TagbarToggle<CR>
+
