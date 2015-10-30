@@ -39,18 +39,34 @@ function m
 }
 
 PATH=/usr/local/bin/:$PATH
-PATH=$PATH:${HOME}/local/bin/
+PATH=${HOME}/local/bin/:${HOME}/local/sbin/:$PATH
 EDITOR="vim"
 CLASSPATH="./"
 #& -- ignore repeats
 # list is colon delimited
 HISTIGNORE="&:ls:u:exit"
+LD_LIBRARY_PATH=${HOME}/local/lib/
+LD_RUN_PATH=${HOME}/local/lib/
+INCLUDE_PATH=${HOME}/local/include
+CFLAGS="-I${HOME}/local/include"
+LDFLAGS="-L${HOME}/local/lib"
+CPPFLAGS=${CFLAGS}
+CXXFLAGS=${CFLAGS}
+PKG_CONFIG_PATH=${HOME}/local/lib/pkgconfig
 
-export  PATH
-export  EDITOR
-export  CLASSPATH
-export  HISTIGNORE
-export	PAGER="vimpager"
+export PATH
+export EDITOR
+export CLASSPATH
+export HISTIGNORE
+export PAGER="vimpager"
+export LD_LIBRARY_PATH
+export LD_RUN_PATH
+export INCLUDE_PATH
+export CFLAGS
+export CPPFLAGS
+export CXXFLAGS
+export LDFLAGS
+export PKG_CONFIG_PATH
 
 set -o vi
 umask 077
@@ -158,6 +174,7 @@ function forward {
 alias b="back"
 alias f="forward"
 
+alias w32="WINEPREFIX=~/.wine32 WINEARCH='win32'"
 
 # source software dev defs
 if [ -f ~/.bash_excensus ]; then

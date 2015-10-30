@@ -33,6 +33,7 @@ Plugin 'xolox/vim-easytags'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'luochen1990/rainbow'
 Plugin 'majutsushi/tagbar'
+Plugin 'Yggdroot/indentLine'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
