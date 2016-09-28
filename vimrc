@@ -189,40 +189,13 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
-"this doesn't every seem to do anything
-"inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-  "\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
-" http://vim.wikia.com/wiki/VimTip102, end of the page
-" smart tab complete mapping
-" BLC modified to skip check an
-" select the first item in the list
-"function! CleverTab()
-  "if pumvisible()
-	"return "\<C-N>"
-  "endif
-  "if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-	"return "\<Tab>"
-  ""elseif exists('&omnifunc') && &omnifunc != ''
-	""return "\<C-X>\<C-O>\<Down>"
-  "else
-	"return "\<C-N>\<Down>"
-  "endif
-"endfunction
-
-"inoremap <Tab> <C-R>=CleverTab()<CR>
+"indention lines for tabs
+set list lcs=tab:\|\ 
 
 "options for surfer.vim
 "map for surfer.vim
 map \t :Surf<CR>
-
-"support for javacript
-let g:surfer_custom_languages = { 
-\   'javascript': {
-\	 'ctags_prg': 'jsctags',
-\	 'ctags_args': '-f-', 
-\   }   
-\}
 
 "project roots for surfer
 let g:surfer_root_markers = ['tags']
@@ -231,43 +204,16 @@ let g:surfer_root_markers = ['tags']
 "asynchronously
 let g:surfer_generate_tags = 0
 
-""a function for filtering tags to the current file
-""we need this, since easytags is generating the tags
-"fu! SessionTags(tag, current_buffer, project_root)
-	"let l:session_files = surfer#SessionFiles(a:current_buffer, a:project_root)
-
-	"let l:is_session_file = 0
-
-	"for buffer_name in l:session_files
-		"if a:tag.file ==# buffer_name
-			"let l:is_session_file = 1
-			"break
-		"endif
-	"endfor
-
-	"if l:is_session_file == 0
-		"return 0
-	"endif
-
-	"return surfer#TagFilter(a:tag, a:current_buffer, a:project_root)
-
-"endfu
-
-""a function for filtering tags to the current file
-""we need this, since easytags is generating the tags
-"fu! ProjectTags(tag, current_buffer, project_root)
-	"return surfer#TagFilter(a:tag, a:current_buffer, a:project_root)
-"endfu
-
-"let g:surfer_modifiers= {
-"\	" ": {"files": "surfer#CurrentBuffer", "filter": "SessionTags"},
-"\	"#": {"files": "surfer#CurrentBuffer", "filter": "ProjectTags"}
-"\}
-
 "options for YOu CompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_key_list_select_completion = ['<TAB>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<C-k>']
+" BLC disabled symantic completion for python because it is often slow
+" Seems to be working OK now
+"let g:ycm_filetype_specific_completion_to_disable = {
+"\ 'python': 1
+"\}
+
 
 "override vims default settings for python files
 au FileType python set ts=4 sw=4 noet
