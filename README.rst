@@ -26,6 +26,19 @@ Finally we can install jsctags
  umask 022
  npm install -g git+https://github.com/ramitos/jsctags.git
 
+TagBar
+------
+
+Get tagbar working with jsctags
+
+NOTE: BLC never did get this working...
+
+::
+
+ cd ~/.vim/bundle/tern_for_vim
+ umask 022
+ npm install
+
 Ubuntu 16.04 Specifics
 ========================
 

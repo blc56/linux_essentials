@@ -22,7 +22,6 @@ Plugin 'matchit.zip'
 Plugin 'renamer.vim'
 Plugin 'repeat.vim'
 Plugin 'YankRing.vim'
-Plugin 'surfer.vim'
 
 "other repos
 Plugin 'scrooloose/nerdcommenter'
@@ -34,6 +33,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'luochen1990/rainbow'
 Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
+Plugin 'ternjs/tern_for_vim'
+Plugin 'https://bitbucket.org/madevgeny/yate.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -193,17 +194,6 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 "indention lines for tabs
 set list lcs=tab:\|\ 
 
-"options for surfer.vim
-"map for surfer.vim
-map \t :Surf<CR>
-
-"project roots for surfer
-let g:surfer_root_markers = ['tags']
-
-"actually, we'll use easy tags, because it can generate tags
-"asynchronously
-let g:surfer_generate_tags = 0
-
 "options for YOu CompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_key_list_select_completion = ['<TAB>', '<C-j>']
@@ -224,4 +214,7 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
 " mapping for tag bar
 nmap <leader>r :TagbarToggle<CR>
+
+" mapping for YATE tags earch
+nmap <leader>t :YATE<CR>
 
