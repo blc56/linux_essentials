@@ -192,7 +192,7 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 
 
 "indention lines for tabs
-set list lcs=tab:\|\ 
+"set list lcs=tab:\|\ 
 
 "options for YOu CompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -217,4 +217,11 @@ nmap <leader>r :TagbarToggle<CR>
 
 " mapping for YATE tags earch
 nmap <leader>t :YATE<CR>
+
+" use javascript syntax highlighting for json files
+au FileType json set filetype=javascript
+
+" command for inserting a warning comment line
+command! InsertWarning :normal OTODO: XXX: BLC DEBUG FIXME!!!<ESC>\cc^
+nmap <leader>w :InsertWarning<CR>
 
