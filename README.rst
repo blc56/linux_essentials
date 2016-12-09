@@ -11,6 +11,8 @@ Initial Setup
  ln -s linux_essentials/screenrc .screenrc
  ln -s linux_essentials/ctags .ctags
  ln -s linux_essentials/vimrc .vimrc
+ # OR, use this for a non_dev setup
+ ln -s linux_essentials/vimrc_non_dev .vimrc
 
  source ~/.bashrc
 
@@ -37,6 +39,8 @@ Backup files
 EasyTags
 ---------
 
+This is not needed for the "non_dev" setup.
+
 Install jsctags: https://github.com/ramitos/jsctags
 
 First we install nodejs.
@@ -44,7 +48,10 @@ First we install nodejs.
 ::
 
  cd /tmp
+ # for debian
  curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
+ # for redhat
+ curl -sL https://rpm.nodesource.com/setup_6.x -o nodesource_setup.sh
  # set umask or else /etc/apt/sources.list.d/nodesource.list will not be readable by "o" and apt will complain
  sudo bash -c 'umask 022 && nodesource_setup.sh'
  rm nodesource_setup.sh
@@ -79,6 +86,8 @@ Run this in command mode.
 YouCompleteMe
 --------------
 
+This is not needed for the "non_dev" setup.
+
 From: https://valloric.github.io/YouCompleteMe/#ubuntu-linux-x64
 
 ::
@@ -90,6 +99,8 @@ From: https://valloric.github.io/YouCompleteMe/#ubuntu-linux-x64
 
 TagBar
 ------
+
+This is not needed for the "non_dev" setup.
 
 Get tagbar working with jsctags
 
