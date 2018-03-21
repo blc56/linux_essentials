@@ -175,6 +175,8 @@ let g:easytags_languages = {
 
 "Easytags use vim search path for tags
 let g:easytags_dynamic_files = 1
+" Better easytags performance
+let g:easytags_async = 1
 
 " omni complete tweaks
 "http://vim.wikia.com/wiki/VimTip1386
