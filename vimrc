@@ -35,6 +35,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'https://bitbucket.org/madevgeny/yate.git'
+Plugin 'rkitover/vimpager'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

@@ -42,6 +42,7 @@ function m
 
 PATH=/usr/local/bin/:$PATH
 PATH=${HOME}/local/bin/:${HOME}/local/sbin/:$PATH
+PATH=${HOME}/.vim/bundle/vimpager:$PATH
 EDITOR="vim.nox-py2"
 CLASSPATH="./"
 #& -- ignore repeats
