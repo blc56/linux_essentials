@@ -16,8 +16,6 @@ alias lla='ls -la'
 alias sc='screen -ln -Rd'
 #alias jm="rm *.class; javac *.java 2>&1 | grep -C 5 .java | grep -C 5 [0-9]"
 alias less="vimpager"
-#ubuntu16.04 specific: http://askubuntu.com/questions/764882/ubuntu-16-04-vim-without-python-support
-alias vim="vim.nox-py2"
 #alias T="vim ~/TODO"
 #alias gc="git checkout"
 #alias gs="git status"
@@ -43,7 +41,7 @@ function m
 PATH=/usr/local/bin/:$PATH
 PATH=${HOME}/local/bin/:${HOME}/local/sbin/:$PATH
 PATH=${HOME}/.vim/bundle/vimpager:$PATH
-EDITOR="vim.nox-py2"
+EDITOR="vim"
 CLASSPATH="./"
 #& -- ignore repeats
 # list is colon delimited
@@ -71,6 +69,7 @@ export CXXFLAGS
 export LDFLAGS
 export PKG_CONFIG_PATH
 
+export TERM=xterm-256color
 set -o vi
 umask 077
 
