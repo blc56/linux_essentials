@@ -16,15 +16,15 @@ Initial Setup
 
  source ~/.bashrc
 
-Ubuntu 16.04 Specifics
+Ubuntu 18.04 Specifics
 ========================
 
-vim with pyton2 support
+vim 
 ------------------------
 
 ::
 
- sudo apt-get install vim-nox-py2
+ sudo apt-get install gvim
 
 Vim 
 ====
@@ -47,15 +47,7 @@ First we install nodejs.
 
 ::
 
- cd /tmp
- # for debian
- curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
- # for redhat
- curl -sL https://rpm.nodesource.com/setup_6.x -o nodesource_setup.sh
- # set umask or else /etc/apt/sources.list.d/nodesource.list will not be readable by "o" and apt will complain
- sudo bash -c 'umask 022 && nodesource_setup.sh'
- rm nodesource_setup.sh
- sudo apt-get install nodejs
+ sudo apt-get install nodejs npm
 
 Finally we can install jsctags
 
