@@ -14,6 +14,7 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias sc='screen -ln -Rd'
+alias psx="ps -ejf f"
 #alias jm="rm *.class; javac *.java 2>&1 | grep -C 5 .java | grep -C 5 [0-9]"
 alias less="vimpager"
 #alias T="vim ~/TODO"
@@ -175,8 +176,6 @@ function forward {
 
 alias b="back"
 alias f="forward"
-
-alias w32="WINEPREFIX=~/.wine32 WINEARCH='win32'"
 
 # source software dev defs
 if [ -f ~/.bash_excensus ]; then
