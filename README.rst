@@ -24,7 +24,7 @@ vim
 
 ::
 
- sudo apt-get install gvim
+ sudo apt-get install vim-gtk3
 
 Vim 
 ====
