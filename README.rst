@@ -111,3 +111,8 @@ Get tagbar working with jsctags
  npm install
  umask 077
 
+Git Tab Completion
+------------------
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-completion.bash
+
+

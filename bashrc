@@ -183,3 +183,7 @@ alias w32="WINEPREFIX=~/.wine32 WINEARCH='win32'"
 if [ -f ~/.bash_excensus ]; then
 	. ~/.bash_excensus
 fi
+
+if [ -f ~/git-completion.bash ]; then
+	source ~/.git-completion.bash
+fi
