@@ -70,6 +70,7 @@ set textwidth=0 " default line wrap
 set scrolloff=10 
 set hlsearch " highlight searches
 set incsearch " search incrementally
+set wrapscan " automaticall "wrap" search around the file
 set guifont=monospace:h10
 set backupdir=~/.tmp/vim_backups " don't store backups in current dir
 set tabstop=4 " tab wdith expansion
