@@ -233,3 +233,16 @@ au FileType json set filetype=javascript
 command! InsertWarning :normal OTODO: XXX: BLC DEBUG FIXME!!!<ESC>\cc^
 nmap <leader>w :InsertWarning<CR>
 
+" make arrow keys work in terminal vims
+nnoremap <silent> <ESC>OA <UP>
+nnoremap <silent> <ESC>OB <DOWN>
+nnoremap <silent> <ESC>OC <RIGHT>
+nnoremap <silent> <ESC>OD <LEFT>
+inoremap <silent> <ESC>OA <UP>
+inoremap <silent> <ESC>OB <DOWN>
+inoremap <silent> <ESC>OC <RIGHT>
+inoremap <silent> <ESC>OD <LEFT>
+vnoremap <silent> <ESC>OA <UP>
+vnoremap <silent> <ESC>OB <DOWN>
+vnoremap <silent> <ESC>OC <RIGHT>
+vnoremap <silent> <ESC>OD <LEFT>

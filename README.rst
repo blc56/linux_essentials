@@ -103,15 +103,17 @@ Get tagbar working with jsctags
  npm install
  umask 077
 
+
 FZF File Finder
 ---------------
-
-This is not needed for the "non_dev" setup.
-
-Get tagbar working with jsctags
 
 ::
 
  cd ~/.vim/bundle/fzf
  ./install --all
+
+Git Tab Completion
+------------------
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-completion.bash
+
 
