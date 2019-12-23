@@ -73,7 +73,7 @@ Run this in command mode.
 
 ::
 
- :BundleInstall
+ :PluginInstall
 
 YouCompleteMe
 --------------
@@ -102,4 +102,16 @@ Get tagbar working with jsctags
  umask 022
  npm install
  umask 077
+
+FZF File Finder
+---------------
+
+This is not needed for the "non_dev" setup.
+
+Get tagbar working with jsctags
+
+::
+
+ cd ~/.vim/bundle/fzf
+ ./install --all
 

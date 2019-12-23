@@ -181,3 +181,5 @@ alias f="forward"
 if [ -f ~/.bash_excensus ]; then
 	. ~/.bash_excensus
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -15,7 +15,6 @@ Bundle 'gmarik/vundle'
 " vim-scripts repos
 " e.g. vim-scripts/a.vim on github
 Plugin 'L9'
-Plugin 'FuzzyFinder'
 Plugin 'a.vim'
 Plugin 'CSApprox'
 Plugin 'matchit.zip'
@@ -28,7 +27,9 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'luochen1990/rainbow'
-Plugin 'Yggdroot/indentLine'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 
 " Disabled in non_dev
 " Plugin 'xolox/vim-misc'
@@ -149,7 +150,9 @@ map <silent> ,R :source ~/.vimrc<Enter>:filetype detect<Enter>:exe ":echo 'vimrc
 " match ErrorMsg '\%>80v.\+'
 
 " Fuzzy file finder of awesomeness
-map \o :FufFile<Enter>
+" map \o :FufFile<Enter>
+" FZF fuzzy finder
+map \o :FZF<enter>
 
 "indention guides
 let g:indent_guides_auto_colors=0

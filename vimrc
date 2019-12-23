@@ -15,13 +15,13 @@ Bundle 'gmarik/vundle'
 " vim-scripts repos
 " e.g. vim-scripts/a.vim on github
 Plugin 'L9'
-Plugin 'FuzzyFinder'
 Plugin 'a.vim'
 Plugin 'CSApprox'
 Plugin 'matchit.zip'
 Plugin 'renamer.vim'
 Plugin 'repeat.vim'
 Plugin 'YankRing.vim'
+
 
 "other repos
 Plugin 'scrooloose/nerdcommenter'
@@ -32,10 +32,12 @@ Plugin 'xolox/vim-easytags'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'luochen1990/rainbow'
 Plugin 'majutsushi/tagbar'
-Plugin 'Yggdroot/indentLine'
+Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'https://bitbucket.org/madevgeny/yate.git'
 Plugin 'rkitover/vimpager'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -149,7 +151,9 @@ map <silent> ,R :source ~/.vimrc<Enter>:filetype detect<Enter>:exe ":echo 'vimrc
 " match ErrorMsg '\%>80v.\+'
 
 " Fuzzy file finder of awesomeness
-map \o :FufFile<Enter>
+" map \o :FufFile<Enter>
+" FZF fuzzy finder
+map \o :FZF<enter>
 
 "indention guides
 let g:indent_guides_auto_colors=0
@@ -157,8 +161,8 @@ let g:indent_guides_auto_colors=0
 " autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=grey20  ctermbg=grey20
 " autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=DarkGrey ctermbg=DarkGrey
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey20 ctermbg=DarkGrey
-let g:indent_guides_guide_size = 2
-" autocmd VimEnter * :IndentGuidesEnable
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
 
 " Preserve undo between sessions
 set undofile
