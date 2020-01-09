@@ -110,7 +110,7 @@ FZF File Finder
 ::
 
  cd ~/.vim/bundle/fzf
- ./install --all
+ ./install --all --no-completion
 
 Git Tab Completion
 ------------------

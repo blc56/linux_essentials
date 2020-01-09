@@ -182,8 +182,9 @@ if [ -f ~/.bash_excensus ]; then
 	. ~/.bash_excensus
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 if [ -f ~/git-completion.bash ]; then
 	source ~/.git-completion.bash
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
