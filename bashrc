@@ -186,5 +186,8 @@ if [ -f ~/git-completion.bash ]; then
 	source ~/.git-completion.bash
 fi
 
+#have fzf use ag, which respects .agignore 
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_CTRL_T_COMMAND='ag -g ""'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

@@ -4,7 +4,7 @@ Initial Setup
 ::
 
  cd $HOME 
- sudo apt-get install exuberant-ctags
+ sudo apt-get install exuberant-ctags silversearcher-ag
  git clone git@github.com:blc56/linux_essentials.git linux_essentials
  rm .bashrc
  ln -s linux_essentials/bashrc .bashrc
