@@ -8,7 +8,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 #alisases
-#alias t="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q \`cat dirs\`"
+alias tags_gen="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q \`cat dirs\`"
 alias u="cd ../;"
 alias ll='ls -l'
 alias la='ls -a'
@@ -42,6 +42,9 @@ function m
 PATH=/usr/local/bin/:$PATH
 PATH=${HOME}/local/bin/:${HOME}/local/sbin/:$PATH
 PATH=${HOME}/.vim/bundle/vimpager:$PATH
+PATH=${HOME}/local/gradle-6.3/bin:$PATH
+PATH=${HOME}/local/DataGrip-2020.1.3/bin/:$PATH
+PATH=${HOME}/local/intellij/bin/:$PATH
 EDITOR="vim"
 CLASSPATH="./"
 #& -- ignore repeats
@@ -182,6 +185,11 @@ if [ -f ~/.bash_excensus ]; then
 	. ~/.bash_excensus
 fi
 
+# source software dev defs
+if [ -f ~/.bash_f5a ]; then
+	. ~/.bash_f5a
+fi
+
 if [ -f ~/git-completion.bash ]; then
 	source ~/.git-completion.bash
 fi
@@ -191,3 +199,7 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND='ag -g ""'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

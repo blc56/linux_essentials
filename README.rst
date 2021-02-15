@@ -26,6 +26,15 @@ vim
 
  sudo apt-get install vim-gtk3
 
+Ubuntu 20.04 Specifics
+========================
+
+NeoVim
+------
+
+::
+    sudo add-apt-repository ppa:neovim-ppa/unstable
+
 Vim 
 ====
 
@@ -75,18 +84,12 @@ Run this in command mode.
 
  :PluginInstall
 
-YouCompleteMe
---------------
-
-This is not needed for the "non_dev" setup.
-
-From: https://valloric.github.io/YouCompleteMe/#ubuntu-linux-x64
+DeoComplete
+-----------
 
 ::
 
- sudo apt-get install build-essential cmake python-dev python3-dev
- cd ~/.vim/bundle/YouCompleteMe
- ./install.py --clang-completer
+ pip3 install --user pynvim
 
 
 TagBar
@@ -116,4 +119,11 @@ Git Tab Completion
 ------------------
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-completion.bash
 
+VS Code/ NeoVim
+===============
+
+::
+
+    ln -s ~/linux_essentials_git/vscode/keybindings.json ~/.config/Code/User/
+    ln -s ~/linux_essentials_git/vscode/settings.json ~/.config/Code/User/
 

@@ -1,0 +1,99 @@
+"vim-plug
+"
+call plug#begin()
+" My bundles here:
+" vim-scripts repos
+" e.g. vim-scripts/a.vim on github
+
+Plug 'vim-scripts/L9'
+Plug 'vim-scripts/a.vim'
+Plug 'vim-scripts/repeat.vim'
+Plug 'vim-scripts/YankRing.vim'
+
+
+"other repos
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'xolox/vim-misc'
+
+" All of your Plugins must be added before the following line
+call plug#end()            " required
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+" line numbers are handled by vscode
+set nonu " line #s
+set noet "don't expand tabs to spaces
+filetype plugin on 
+" syntax on
+set wrap " line wrapping
+set lbr " clean wrapping
+set textwidth=0 " default line wrap
+" start scrolling when the cursor is this many lines from top/bottom 
+set scrolloff=10 
+set hlsearch " highlight searches
+set incsearch " search incrementally
+set wrapscan " automaticall "wrap" search around the file
+set tabstop=4 " tab wdith expansion
+set smarttab
+set autoindent
+set cindent
+set smartindent
+" make backspace key work w/o restrictions in insert mode
+set backspace=indent,eol,start
+set tags=tags;/ " default location of tags file, ; means search backwards until '/'
+set noeb " no error bell
+set nospell
+" ignore whitespace
+set diffopt+=iwhite
+
+" TODO: XXX: BLC DEBUG FIXME!!!
+" remap visual blockwise selection (column mode)
+" noremap <C-e> <C-v>
+
+" TODO: XXX: BLC DEBUG FIXME!!!
+" open tags in new splits
+map \s :sp<Enter>:exec("tag ".expand("<cword>"))<Enter>
+map \v :vsp<Enter>:exec("tag ".expand("<cword>"))<Enter>
+map ,s :sp<Enter>:tag 
+map ,v :vsp<Enter>:tag 
+
+" remap movement on wrapped lines
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
+
+" Fuzzy file finder of awesomeness
+" TODO: XXX: BLC DEBUG FIXME!!!*/
+"fzf keybinding
+nmap \o :call VSCodeNotify('fzf-quick-open.runFzfFile')<CR>
+" https://stackoverflow.com/questions/2414626/unsaved-buffer-warning-when-switching-files-buffers
+set hidden
+
+" Preserve undo between sessions
+set undofile
+set undodir=~/.vim/undodir
+
+" command for inserting a warning comment line
+command! InsertWarning :normal OTODO: XXX: BLC DEBUG FIXME!!!<ESC>\cc^
+nmap <leader>w :InsertWarning<CR>
+
+" VS code mappings
+nmap \r :call VSCodeNotify('outline.focus')<CR>
+nmap \t :call VSCodeNotify('workbench.action.goToSymbol')<CR>
+
+"override vims default settings for python files
+au FileType python set ts=4 sw=4 noet
+au FileType pyrex set ts=4 sw=4 noet
+au FileType yaml set ts=2 sw=2 et
+

@@ -1,0 +1,37 @@
+{
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "latex-workshop.view.pdf.viewer": "external",
+    "window.zoomLevel": 1,
+    "spellright.language": [
+        "en_US"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ],
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.linux": "/home/funkycrime/linux_essentials_git/vscode_neovim_rc",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "java.imports.gradle.wrapper.checksums": [
+        {
+            "sha256": "803c75f3307787290478a5ccfa9054c5c0c7b4250c1b96ceb77ad41fbe919e4e",
+            "allowed": true
+        },
+        {
+            "sha256": "e996d452d2645e70c01c11143ca2d3742734a28da2bf61f25c82bdc288c9e637",
+            "allowed": true
+        }
+    ],
+    "editor.minimap.renderCharacters": false,
+    "editor.scrollBeyondLastLine": false,
+    "terminal.integrated.allowChords": false
+}

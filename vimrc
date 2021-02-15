@@ -5,6 +5,14 @@ filetype off				  " required!
 
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 " let Vundle manage Vundle
 " required! 
@@ -29,30 +37,53 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'luochen1990/rainbow'
 Plugin 'majutsushi/tagbar'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'https://bitbucket.org/madevgeny/yate.git'
 Plugin 'rkitover/vimpager'
+
+" FZF
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 
+" deocomplete
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
+Plugin 'Shougo/deoplete.nvim'
+
+" Java-completion
+" https://averywagar.com/posts/2018/01/configuring-vim-for-java-development/
+Plugin 'artur-shaik/vim-javacomplete2'
+"Code linting
+"Plugin 'dense-analysis/ale'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
+"deoplete configuration
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+call deoplete#custom#option('sources', {
+	\ '_': ['buffer', 'tags'],
+	\ 'java': ['buffer', 'tags', 'javacomplete2', 'jc'], 
+\})
+
+" Java-completion Configuration
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+" remove un-used imports
+map \jr  <Plug>(JavaComplete-Imports-RemoveUnused)
+" add un-used imports
+map \ja <Plug>(JavaComplete-Imports-AddMissing)
+
+"ALE Configuration
+"let g:ale_java_javac_classpath = javacomplete#server#GetClassPath()
+"let g:ale_linters = {
+"\  'cs':['syntax', 'semantic', 'issues'],
+"\  'python': ['pylint'],
+"\  'java': ['javac']
+"\ }
+
 
 "something for latex
 let g:tex_flavor='latex'
@@ -154,6 +185,8 @@ map <silent> ,R :source ~/.vimrc<Enter>:filetype detect<Enter>:exe ":echo 'vimrc
 " map \o :FufFile<Enter>
 " FZF fuzzy finder
 map \o :FZF<enter>
+" https://stackoverflow.com/questions/2414626/unsaved-buffer-warning-when-switching-files-buffers
+set hidden
 
 "indention guides
 let g:indent_guides_auto_colors=0
@@ -183,6 +216,7 @@ let g:easytags_languages = {
 let g:easytags_dynamic_files = 1
 " Better easytags performance
 let g:easytags_async = 1
+let g:easytags_on_cursorhold = 1
 
 " omni complete tweaks
 "http://vim.wikia.com/wiki/VimTip1386
@@ -198,20 +232,18 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
-
-"indention lines for tabs
-"set list lcs=tab:\|\ 
-
 "options for YOu CompleteMe
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_key_list_select_completion = ['<TAB>', '<C-j>']
-let g:ycm_key_list_previous_completion = ['<C-k>']
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_key_list_select_completion = ['<TAB>', '<C-j>']
+" let g:ycm_key_list_previous_completion = ['<C-k>']
 " BLC disabled symantic completion for python because it is often slow
 " Seems to be working OK now
 "let g:ycm_filetype_specific_completion_to_disable = {
 "\ 'python': 1
 "\}
 
+" options for Deoplete
+let g:deoplete#enable_at_startup = 1
 
 "override vims default settings for python files
 au FileType python set ts=4 sw=4 noet
