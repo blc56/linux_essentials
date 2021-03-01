@@ -61,36 +61,36 @@ map ,s :sp<Enter>:tag
 map ,v :vsp<Enter>:tag 
 
 " remap movement on wrapped lines
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up> gk
-vnoremap <Down> gj
-vnoremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
+nmap j gj
+nmap k gk
+vmap j gj
+vmap k gk
+nmap <Down> gj
+nmap <Up> gk
+vmap <Down> gj
+vmap <Up> gk
+imap <Down> <C-o>gj
+imap <Up> <C-o>gk
 
 
 " Fuzzy file finder of awesomeness
 " TODO: XXX: BLC DEBUG FIXME!!!*/
 "fzf keybinding
-nmap \o :call VSCodeNotify('fzf-quick-open.runFzfFile')<CR>
+" nmap \o :call VSCodeNotify('fzf-quick-open.runFzfFile')<CR>
 " https://stackoverflow.com/questions/2414626/unsaved-buffer-warning-when-switching-files-buffers
 set hidden
 
 " Preserve undo between sessions
-set undofile
-set undodir=~/.vim/undodir
+" set undofile
+" set undodir=~/.vim/undodir
 
 " command for inserting a warning comment line
 command! InsertWarning :normal OTODO: XXX: BLC DEBUG FIXME!!!<ESC>\cc^
 nmap <leader>w :InsertWarning<CR>
 
 " VS code mappings
-nmap \r :call VSCodeNotify('outline.focus')<CR>
-nmap \t :call VSCodeNotify('workbench.action.goToSymbol')<CR>
+" nmap \r :call VSCodeNotify('outline.focus')<CR>
+" nmap \t :call VSCodeNotify('workbench.action.goToSymbol')<CR>
 
 "override vims default settings for python files
 au FileType python set ts=4 sw=4 noet

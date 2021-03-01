@@ -33,5 +33,9 @@
     ],
     "editor.minimap.renderCharacters": false,
     "editor.scrollBeyondLastLine": false,
-    "terminal.integrated.allowChords": false
+    "terminal.integrated.allowChords": false,
+    "timeline.excludeSources": [],
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": false,
+    "editor.fontSize": 12
 }
