@@ -8,7 +8,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 #alisases
-alias tags_gen="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q \`cat dirs\`"
+#alias tags_gen="ctags -R --c++-kinds=+p --fields=+iaS --extra=+q \`cat dirs\`"
 alias u="cd ../;"
 alias ll='ls -l'
 alias la='ls -a'
@@ -16,7 +16,7 @@ alias lla='ls -la'
 alias sc='screen -ln -Rd'
 alias psx="ps -e ouid,pid,ppid,pgid,sid,cgname,c,stime,tty,time,cmd --forest && ps ouid,pid,ppid,pgid,sid,cgname,c,stime,tty,time,cmd | head -n 1"
 #alias jm="rm *.class; javac *.java 2>&1 | grep -C 5 .java | grep -C 5 [0-9]"
-alias less="vimpager"
+#alias less="vimpager"
 #alias T="vim ~/TODO"
 #alias gc="git checkout"
 #alias gs="git status"
@@ -34,18 +34,14 @@ alias less="vimpager"
 #alias hl='hg log | less'
 #alias hlv='hg -v log | less'
 
-function m 
-{
-	make -s $@ 2>&1 | grep --color=always -iC 5 "\(error\)\|\(warning\)\|\([0-9]\)\|\(=\)"
-}
+#function m 
+#{
+	#make -s $@ 2>&1 | grep --color=always -iC 5 "\(error\)\|\(warning\)\|\([0-9]\)\|\(=\)"
+#}
 
 PATH=/usr/local/bin/:$PATH
 PATH=${HOME}/local/bin/:${HOME}/local/sbin/:$PATH
-PATH=${HOME}/.vim/bundle/vimpager:$PATH
-PATH=${HOME}/local/gradle-6.3/bin:$PATH
-PATH=${HOME}/local/DataGrip-2020.1.3/bin/:$PATH
-PATH=${HOME}/local/intellij/bin/:$PATH
-EDITOR="vim"
+EDITOR="nvim"
 CLASSPATH="./"
 #& -- ignore repeats
 # list is colon delimited
@@ -63,7 +59,7 @@ export PATH
 export EDITOR
 export CLASSPATH
 export HISTIGNORE
-export PAGER="vimpager"
+#export PAGER="vimpager"
 export LD_LIBRARY_PATH
 export LD_RUN_PATH
 export INCLUDE_PATH
@@ -179,16 +175,6 @@ function forward {
 
 alias b="back"
 alias f="forward"
-
-# source software dev defs
-if [ -f ~/.bash_excensus ]; then
-	. ~/.bash_excensus
-fi
-
-# source software dev defs
-if [ -f ~/.bash_f5a ]; then
-	. ~/.bash_f5a
-fi
 
 if [ -f ~/git-completion.bash ]; then
 	source ~/.git-completion.bash
