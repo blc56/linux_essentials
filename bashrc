@@ -15,8 +15,10 @@ alias la='ls -a'
 alias lla='ls -la'
 alias sc='screen -ln -Rd'
 alias psx="ps -e ouid,pid,ppid,pgid,sid,cgname,c,stime,tty,time,cmd --forest && ps ouid,pid,ppid,pgid,sid,cgname,c,stime,tty,time,cmd | head -n 1"
+alias vim="nvim"
+alias less="nvim -R"
+alias view="nvim -R"
 #alias jm="rm *.class; javac *.java 2>&1 | grep -C 5 .java | grep -C 5 [0-9]"
-#alias less="vimpager"
 #alias T="vim ~/TODO"
 #alias gc="git checkout"
 #alias gs="git status"
@@ -59,7 +61,8 @@ export PATH
 export EDITOR
 export CLASSPATH
 export HISTIGNORE
-#export PAGER="vimpager"
+export PAGER="nvim -R -c AnsiEsc"
+export MANPAGER="nvim -c 'set ft=man' -"
 export LD_LIBRARY_PATH
 export LD_RUN_PATH
 export INCLUDE_PATH

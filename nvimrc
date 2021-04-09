@@ -11,6 +11,7 @@ Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/renamer.vim'
 Plug 'vim-scripts/repeat.vim'
 Plug 'vim-scripts/YankRing.vim'
+Plug 'powerman/vim-plugin-AnsiEsc'
 
 
 "other repos
@@ -82,7 +83,7 @@ set hlsearch " highlight searches
 set incsearch " search incrementally
 set wrapscan " automaticall "wrap" search around the file
 " set guifont=monospace:h10
-set backupdir=~/.tmp/vim_backups " don't store backups in current dir
+" set backupdir=~/tmp/vim_backups " don't store backups in current dir
 set tabstop=4 " tab wdith expansion
 set smarttab
 set autoindent
