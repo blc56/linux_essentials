@@ -97,3 +97,18 @@ au FileType python set ts=4 sw=4 noet
 au FileType pyrex set ts=4 sw=4 noet
 au FileType yaml set ts=2 sw=2 et
 
+" get clipboard working for vscode using WSL
+if exists('$WSLENV')
+	let g:clipboard = {
+				\   'name': 'WslClipboard',
+				\   'copy': {
+				\      '+': 'clip.exe',
+				\      '*': 'clip.exe',
+				\    },
+				\   'paste': {
+				\      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+				\      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+				\   },
+				\   'cache_enabled': 0,
+				\ }
+endif

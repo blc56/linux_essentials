@@ -18,6 +18,7 @@ alias psx="ps -e ouid,pid,ppid,pgid,sid,cgname,c,stime,tty,time,cmd --forest && 
 alias vim="nvim"
 alias less="nvim -R"
 alias view="nvim -R"
+alias fd="fdfind"
 #alias jm="rm *.class; javac *.java 2>&1 | grep -C 5 .java | grep -C 5 [0-9]"
 #alias T="vim ~/TODO"
 #alias gc="git checkout"
@@ -183,11 +184,16 @@ if [ -f ~/git-completion.bash ]; then
 	source ~/.git-completion.bash
 fi
 
-#have fzf use ag, which respects .agignore 
-export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_CTRL_T_COMMAND='ag -g ""'
+#have fzf use ripgrep
+export FZF_DEFAULT_COMMAND='rg --column --line-number --no-heading --smart-case ""'
+export FZF_CTRL_T_COMMAND='fd '
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+
+# source bash customations for local environment
+if [ -f ~/.bashrc_local ]; then
+	source ~/.bashrc_local
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
