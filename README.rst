@@ -16,15 +16,6 @@ Initial Setup
 
  source ~/.bashrc
 
-Ubuntu 18.04 Specifics
-========================
-
-vim 
-------------------------
-
-::
-
- sudo apt-get install vim-gtk3
 
 Ubuntu 20.04 Specifics
 ========================
@@ -126,8 +117,8 @@ curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-com
 VS Code/ NeoVim
 ===============
 
-::
+Run neovim with the vscode config file and run ``:PlugInstall``
 
-    ln -s ~/linux_essentials_git/vscode/keybindings.json ~/.config/Code/User/
-    ln -s ~/linux_essentials_git/vscode/settings.json ~/.config/Code/User/
+::
+    nvim -u ~/linux_essentials/vscode_neovim_rc
 
