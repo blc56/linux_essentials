@@ -12,7 +12,7 @@ Plug 'vim-scripts/YankRing.vim'
 
 
 "other repos
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'xolox/vim-misc'
@@ -74,7 +74,6 @@ imap <Up> <C-o>gk
 
 
 " Fuzzy file finder of awesomeness
-" TODO: XXX: BLC DEBUG FIXME!!!*/
 "fzf keybinding
 " nmap \o :call VSCodeNotify('fzf-quick-open.runFzfFile')<CR>
 " https://stackoverflow.com/questions/2414626/unsaved-buffer-warning-when-switching-files-buffers
@@ -91,6 +90,12 @@ nmap <leader>w :InsertWarning<CR>
 " VS code mappings
 " nmap \r :call VSCodeNotify('outline.focus')<CR>
 " nmap \t :call VSCodeNotify('workbench.action.goToSymbol')<CR>
+
+" NERDCommenter
+" https://github.com/preservim/nerdcommenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
 
 "override vims default settings for python files
 au FileType python set ts=4 sw=4 noet
