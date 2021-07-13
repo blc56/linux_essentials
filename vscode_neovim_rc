@@ -5,8 +5,8 @@ call plug#begin()
 " vim-scripts repos
 " e.g. vim-scripts/a.vim on github
 
-Plug 'vim-scripts/L9'
-Plug 'vim-scripts/a.vim'
+" Plug 'vim-scripts/L9'
+" Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/repeat.vim'
 Plug 'vim-scripts/YankRing.vim'
 
@@ -15,7 +15,7 @@ Plug 'vim-scripts/YankRing.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-misc'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
