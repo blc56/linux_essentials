@@ -87,6 +87,8 @@ shopt -s checkwinsize
 
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
+#ignore white space and duplicates in history
+export HISTCONTROL=ignoreboth
 
 # Change the window title of X terminals 
 case ${TERM} in
