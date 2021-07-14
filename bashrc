@@ -188,7 +188,7 @@ fi
 
 #have fzf use ripgrep
 export FZF_DEFAULT_COMMAND='rg --column --line-number --no-heading --smart-case ""'
-export FZF_CTRL_T_COMMAND='fd '
+export FZF_CTRL_T_COMMAND='fdfind '
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 
