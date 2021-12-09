@@ -9,6 +9,7 @@ call plug#begin()
 " Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/repeat.vim'
 Plug 'svermeulen/vim-yoink'
+Plug 'svermeulen/vim-subversive'
 
 
 "other repos
@@ -106,6 +107,11 @@ nmap P <plug>(YoinkPaste_P)
 " Also replace the default gp with yoink paste so we can toggle paste in this case too
 nmap gp <plug>(YoinkPaste_gp)
 nmap gP <plug>(YoinkPaste_gP)
+
+" Visual paste support using vim-subversive
+" xmap s <plug>(SubversiveSubstitute)
+xmap p <plug>(SubversiveSubstitute)
+xmap P <plug>(SubversiveSubstitute)
 
 "override vims default settings for python files
 au FileType python set ts=4 sw=4 noet
