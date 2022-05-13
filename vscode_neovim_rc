@@ -27,13 +27,13 @@ set softtabstop=4
 " line numbers are handled by vscode
 set nonu " line #s
 set noet "don't expand tabs to spaces
-filetype plugin on 
+filetype plugin on
 " syntax on
 set wrap " line wrapping
 set lbr " clean wrapping
 set textwidth=0 " default line wrap
-" start scrolling when the cursor is this many lines from top/bottom 
-set scrolloff=10 
+" start scrolling when the cursor is this many lines from top/bottom
+set scrolloff=10
 set hlsearch " highlight searches
 set incsearch " search incrementally
 set wrapscan " automaticall "wrap" search around the file
@@ -58,8 +58,8 @@ set diffopt+=iwhite
 " open tags in new splits
 map \s :sp<Enter>:exec("tag ".expand("<cword>"))<Enter>
 map \v :vsp<Enter>:exec("tag ".expand("<cword>"))<Enter>
-map ,s :sp<Enter>:tag 
-map ,v :vsp<Enter>:tag 
+map ,s :sp<Enter>:tag
+map ,v :vsp<Enter>:tag
 
 " remap movement on wrapped lines
 nmap j gj

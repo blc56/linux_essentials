@@ -18,60 +18,27 @@ alias psx="ps -e ouid,pid,ppid,pgid,sid,cgname,c,stime,tty,time,cmd --forest && 
 alias vim="nvim"
 alias less="nvim -R"
 alias view="nvim -R"
-alias fd="fdfind"
-#alias jm="rm *.class; javac *.java 2>&1 | grep -C 5 .java | grep -C 5 [0-9]"
-#alias T="vim ~/TODO"
-#alias gc="git checkout"
-#alias gs="git status"
-#alias gsh="git stash"
-#alias gb="git branch"
-#alias gr="git rebase"
-#alias gm="git merge"
-#alias gd="git diff --color"
-#alias gdt="git difftool --color"
-#alias gl="git log"
-#alias ga="git add"
-#alias gps="git-p4 sync"
-#alias gpr="git-p4 rebase"
-#alias hgl='hg glog | less'
-#alias hl='hg log | less'
-#alias hlv='hg -v log | less'
+if [[ $OSTYPE=="darwin32" ]]; then
+	alias fdfind="fd"
+else
+	alias fd="fdfind"
+fi
 
-#function m 
-#{
-	#make -s $@ 2>&1 | grep --color=always -iC 5 "\(error\)\|\(warning\)\|\([0-9]\)\|\(=\)"
-#}
-
-PATH=/usr/local/bin/:$PATH
-PATH=${HOME}/local/bin/:${HOME}/local/sbin/:$PATH
-EDITOR="nvim"
-CLASSPATH="./"
+export PATH=/usr/local/bin/:$PATH
+export PATH=${HOME}/local/bin/:${HOME}/local/sbin/:$PATH
+export EDITOR="nvim"
+export CLASSPATH="./"
 #& -- ignore repeats
 # list is colon delimited
-HISTIGNORE="&:ls:u:exit"
-LD_LIBRARY_PATH=${HOME}/local/lib/
-LD_RUN_PATH=${HOME}/local/lib/
-INCLUDE_PATH=${HOME}/local/include
-CFLAGS="-I${HOME}/local/include"
-LDFLAGS="-L${HOME}/local/lib"
-CPPFLAGS=${CFLAGS}
-CXXFLAGS=${CFLAGS}
-PKG_CONFIG_PATH=${HOME}/local/lib/pkgconfig
-
-export PATH
-export EDITOR
-export CLASSPATH
-export HISTIGNORE
-export PAGER="nvim -R -c AnsiEsc"
-export MANPAGER="nvim -c 'set ft=man' -"
-export LD_LIBRARY_PATH
-export LD_RUN_PATH
-export INCLUDE_PATH
-export CFLAGS
-export CPPFLAGS
-export CXXFLAGS
-export LDFLAGS
-export PKG_CONFIG_PATH
+export HISTIGNORE="&:ls:u:exit"
+export LD_LIBRARY_PATH=${HOME}/local/lib/
+export LD_RUN_PATH=${HOME}/local/lib/
+export INCLUDE_PATH=${HOME}/local/include
+export CFLAGS="-I${HOME}/local/include"
+export LDFLAGS="-L${HOME}/local/lib"
+export CPPFLAGS=${CFLAGS}
+export CXXFLAGS=${CFLAGS}
+export PKG_CONFIG_PATH=${HOME}/local/lib/pkgconfig
 
 export TERM=xterm-256color
 set -o vi
@@ -182,9 +149,20 @@ function forward {
 alias b="back"
 alias f="forward"
 
-if [ -f ~/git-completion.bash ]; then
+if [ -f ~/.git-completion.bash ]; then
 	source ~/.git-completion.bash
 fi
+
+# delete local branches which have been merged into the current branch
+function git_delete_merged {
+	git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d
+}
+function git_diff {
+	yes y | git difftool $*
+}
+function docker_rm_exited_containers {
+	docker ps --filter status=exited -q | xargs docker rm
+}
 
 #have fzf use ripgrep
 export FZF_DEFAULT_COMMAND='rg --column --line-number --no-heading --smart-case ""'
