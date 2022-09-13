@@ -5,14 +5,14 @@ Initial Setup
 
  cd $HOME
  sudo apt-get install exuberant-ctags silversearcher-ag
- git clone git@github.com:blc56/linux_essentials.git linux_essentials
+ git clone git@github.com:blc56/linux_essentials.git linux_essentials_git
  rm .bashrc
- ln -s linux_essentials/bashrc .bashrc
+ ln -s linux_essentials_git/bashrc .bashrc
  # mac only
- #ln -s linux_essentials/bash_profile_mac .bash_profile
- ln -s linux_essentials/screenrc .screenrc
- ln -s linux_essentials/ctags .ctags
- ln -s linux_essentials/vimrc .vimrc
+ #ln -s linux_essentials_git/bash_profile_mac .bash_profile
+ ln -s linux_essentials_git/screenrc .screenrc
+ ln -s linux_essentials_git/ctags .ctags
+ ln -s linux_essentials_git/vimrc .vimrc
 
  source ~/.bashrc
 
@@ -26,7 +26,9 @@ NeoVim
 ::
 
         sudo add-apt-repository ppa:neovim-ppa/unstable
-        ln -s ~/linux_essentials/nvimrc ~/.config/nvim/init.vim
+        # linux
+        mkdir -p ~/.config/nvim/
+        ln -s ~/linux_essentials_git/nvimrc ~/.config/nvim/init.vim
         sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
@@ -76,7 +78,7 @@ VS Code/ NeoVim
 Run neovim with the vscode config file and run ``:PlugInstall``
 
 ::
-    nvim -u ~/linux_essentials/vscode_neovim_rc
+    nvim -u ~/linux_essentials_git/vscode_neovim_rc
 
 Git
 ===
