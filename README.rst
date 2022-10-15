@@ -16,6 +16,16 @@ Initial Setup
 
  source ~/.bashrc
 
+Arch Linux Specifics
+========================
+
+NeoVim
+------
+
+::
+
+        # get neovim working with system copy/paste clipboard
+        yay -S xclip
 
 Ubuntu 20.04 Specifics
 ========================
