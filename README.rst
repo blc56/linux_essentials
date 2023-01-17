@@ -41,6 +41,18 @@ NeoVim
         ln -s ~/linux_essentials_git/nvimrc ~/.config/nvim/init.vim
         sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+Windows Specifics
+========================
+
+NeoVim
+------
+
+::
+
+        iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+    ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
+
+*Note* Run :PlugInstall in powershell. It will not work from git-bash
 
 Mac
 ========================
@@ -65,10 +77,7 @@ Backup files
 Bundle Setup
 -------------
 
-::
-
- cd $HOME
- git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+Follow the instructions here: https://github.com/junegunn/vim-plug
 
 Open vim.
 
@@ -103,7 +112,8 @@ Git
 
         # https://stackoverflow.com/a/44549734
         git config --global merge.tool vscode
-        git config --global mergetool.vscode.cmd 'code --wait $MERGED'
+        git config --global mergetool.vscode.cmd 'code --new-window --wait $MERGED'
         git config --global diff.tool vscode
-        git config --global difftool.vscode.cmd 'code --wait --diff $LOCAL $REMOTE'
+        git config --global diff.guitool vscode
+        git config --global difftool.vscode.cmd 'COMPARE_FOLDERS=DIFF code --new-window --wait --diff $LOCAL $REMOTE'
 
