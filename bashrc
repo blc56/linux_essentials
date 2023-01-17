@@ -31,6 +31,7 @@ export CLASSPATH="./"
 #& -- ignore repeats
 # list is colon delimited
 export HISTIGNORE="&:ls:u:exit"
+
 export LD_LIBRARY_PATH=${HOME}/local/lib/
 export LD_RUN_PATH=${HOME}/local/lib/
 export INCLUDE_PATH=${HOME}/local/include
@@ -154,11 +155,14 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 # delete local branches which have been merged into the current branch
-function git_delete_merged {
-	git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d
+function git_print_merged {
+	#git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d
+	git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]] && echo "$branch"; done
+
 }
-function git_diff {
-	yes y | git difftool $*
+function git_delete_merged {
+	#git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d
+	git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch ; done
 }
 function docker_rm_exited_containers {
 	docker ps --filter status=exited -q | xargs docker rm
