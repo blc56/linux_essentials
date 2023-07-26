@@ -156,14 +156,18 @@ fi
 
 # delete local branches which have been merged into the current branch
 function git_print_merged {
-	#git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d
+	#git branch --merged | grep -E -v "(^\*|master|main|dev)" | xargs git branch -d
 	git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]] && echo "$branch"; done
 
 }
 function git_delete_merged {
-	#git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d
+	#git branch --merged | grep -v "(^\*|master|main|dev)" | xargs git branch -d
 	git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch ; done
 }
+function git_clean_tracking {
+	git fetch -p ; git branch -r | awk '{print $1}' | grep -E  -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d
+}
+
 function docker_rm_exited_containers {
 	docker ps --filter status=exited -q | xargs docker rm
 }
